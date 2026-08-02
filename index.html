@@ -9,7 +9,9 @@
     <div id="app">
         <h1>{{message}}</h1>
         <p>I am {{person.name}} {{person.age}} years old</p>
-        <p v-show="person.hasCorporateCard">Card spending limit: {{person.spendingLimit}}</p>
+        <p v-if="person.hasCorporateCard">Person have a corporate card spending limit: {{person.spendingLimit}}</p>
+        <p v-else-if="person.salary > 10000 && person.yearsInCompany >= 2">Person is eligible for a corporate card</p>
+        <p v-else>Person doesn't have a corporate card</p>
     </div>
 </body>
 <script>
@@ -23,7 +25,7 @@
                 name: "John J.",
                 age: 30,
                 country: "USA",
-                salary: "***",
+                salary: 20000,
                 hasCorporateCard: true,
                 spendingLimit: 10000,
                 yearsInCompany: 5
