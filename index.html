@@ -7,7 +7,7 @@
 
 <body>
     <div id="app">
-        <h1>{{getMessage()}}</h1>
+        <h1 v-html="getMessage()"></h1>
         <p>I am {{person.name}} {{person.age}} years old</p>
         <p>My lucky number: {{myLuckyNumber}}</p>
         {{setRandomNumber()}}
@@ -18,7 +18,7 @@
 
     createApp({
         setup() {
-            const message = "Hello world";
+            const message = "Hello world</h1>";
 
             let myLuckyNumber = ref(5);
 
@@ -29,7 +29,7 @@
             });
 
             function getMessage() {
-                return message.toUpperCase();
+                return `<h1><u>${message}</u></h1>`;
             }
 
             function setRandomNumber() {
