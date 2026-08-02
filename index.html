@@ -14,7 +14,7 @@
     </div>
 </body>
 <script>
-    const { createApp, ref } = Vue;
+    const { createApp, ref, reactive } = Vue;
 
     createApp({
         setup() {
@@ -22,22 +22,22 @@
 
             let myLuckyNumber = ref(5);
 
+            const person = reactive({
+                name: "John J.",
+                age: 30,
+                country: "USA"
+            });
+
             function getMessage() {
                 return message.toUpperCase();
             }
 
             function setRandomNumber() {
                 setTimeout(() => {
-                    person.value.age = 31;
+                    person.age = 31;
                     myLuckyNumber.value = Math.floor(Math.random() * 100) + 1;
                 }, 2000);
             }
-
-            const person = ref({
-                name: "John J.",
-                age: 30,
-                country: "USA"
-            });
 
             return { myLuckyNumber, getMessage, setRandomNumber, person }
         }
