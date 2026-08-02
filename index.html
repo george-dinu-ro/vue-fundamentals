@@ -8,7 +8,9 @@
 <body>
     <div id="app">
         <h1>{{message}}</h1>
-        <p>{{question}}</p>
+        <p>My name is {{person.name}}</p>
+        <p>My details: {{person}}</p>
+        <p>My lucky numbers: {{numbers}}</p>
     </div>
 </body>
 <script>
@@ -17,9 +19,16 @@
     createApp({
         setup() {
             const message = "Hello world";
-            const question = "How are you?";
 
-            return { message, question }
+            const numbers = [11, 22, 33];
+
+            const person = {
+                name: "John J.",
+                age: 30,
+                country: "USA"
+            };
+
+            return { message, numbers, person }
         }
     }).mount("#app");
 
