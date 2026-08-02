@@ -9,7 +9,8 @@
     <div id="app">
         <h1 v-html="getMessage()"></h1>
         <p>I am {{person.name}} {{person.age}} years old</p>
-        <p>My lucky number: {{myLuckyNumber}}</p>
+        <p>Random updating number: {{randomNumber}}</p>
+        <p v-once>Random fixed number: {{randomNumber}}</p>
         {{setRandomNumber()}}
     </div>
 </body>
@@ -20,7 +21,7 @@
         setup() {
             const message = "Hello world</h1>";
 
-            let myLuckyNumber = ref(5);
+            let randomNumber = ref(5);
 
             const person = reactive({
                 name: "John J.",
@@ -35,11 +36,11 @@
             function setRandomNumber() {
                 setTimeout(() => {
                     person.age = 31;
-                    myLuckyNumber.value = Math.floor(Math.random() * 100) + 1;
+                    randomNumber.value = Math.floor(Math.random() * 100) + 1;
                 }, 2000);
             }
 
-            return { myLuckyNumber, getMessage, setRandomNumber, person }
+            return { randomNumber, getMessage, setRandomNumber, person }
         }
     }).mount("#app");
 
