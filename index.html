@@ -7,65 +7,15 @@
 
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
-        <ul>
-            <li v-for="(value, key) in person">
-                {{key}} - {{value}}
-            </li>
-        </ul>
-        <h3>My Projects</h3>
-        <ul>
-            <li v-for="(project, index) in person.projects" :key="project.name">
-                <span>{{index + 1}} - Project: {{project.name}} for {{project.time}}</span> <input type="text" />
-            </li>
-        </ul>
-        <h3>My favorite numbers</h3>
-        <div>
-            <span v-for="favoriteNumber in favoriteNumbers">{{favoriteNumber}}, </span>
-        </div>
-        {{reorderProjects()}}
+        Hello world
     </div>
 </body>
 <script>
-    const { createApp, ref, reactive } = Vue;
+    const { createApp } = Vue;
 
     createApp({
         setup() {
-            const message = "Hello world";
-
-            const favoriteNumbers = [1, 11, 22, 33, 44, 55];
-
-            function reorderProjects() {
-                setTimeout(() => {
-                    person.projects.sort(() => Math.random() - 0.5);
-                }, 5000);
-            }
-
-            const person = reactive({
-                name: "John J.",
-                age: 30,
-                country: "USA",
-                salary: 20000,
-                hasCorporateCard: true,
-                spendingLimit: 10000,
-                yearsInCompany: 5,
-                projects: [
-                    {
-                        name: "Project A",
-                        time: "2 years"
-                    },
-                    {
-                        name: "Project B",
-                        time: "2 years"
-                    },
-                    {
-                        name: "Project C",
-                        time: "11 months"
-                    }
-                ]
-            });
-
-            return { message, favoriteNumbers, person, reorderProjects }
+            return {}
         }
     }).mount("#app");
 
