@@ -11,7 +11,7 @@
         <p>My name is {{person.name}}</p>
         <p>My details: {{person}}</p>
         <p>My lucky number: {{myLuckyNumber}}</p>
-        <p>Random number in range [1, 10] : {{getRandomNumber()}}</p>
+        {{setRandomNumber()}}
     </div>
 </body>
 <script>
@@ -27,9 +27,10 @@
                 return message.toUpperCase();
             }
 
-            function getRandomNumber() {
-                myLuckyNumber.value = Math.floor(Math.random() * 100) + 1;
-                return Math.floor(Math.random() * 10) + 1;
+            function setRandomNumber() {
+                setTimeout(() => {
+                    myLuckyNumber.value = Math.floor(Math.random() * 100) + 1;
+                }, 2000);
             }
 
             const person = {
@@ -38,7 +39,7 @@
                 country: "USA"
             };
 
-            return { myLuckyNumber, getMessage, getRandomNumber, person }
+            return { myLuckyNumber, getMessage, setRandomNumber, person }
         }
     }).mount("#app");
 
