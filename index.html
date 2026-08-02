@@ -9,10 +9,16 @@
     <div id="app">
         <h1>{{message}}</h1>
         <p>I am {{person.name}} {{person.age}} years old</p>
-        <p>My favorite numbers</p>
+        <h3>My Projects</h3>
         <ul>
-            <li v-for="favoriteNumber in favoriteNumbers">{{favoriteNumber}}</li>
+            <li v-for="(project, index) in person.projects">
+                <span>{{index + 1}} - Project: {{project.name}} for {{project.time}}</span>
+            </li>
         </ul>
+        <h3>My favorite numbers</h3>
+        <div>
+            <span v-for="favoriteNumber in favoriteNumbers">{{favoriteNumber}}, </span>
+        </div>
     </div>
 </body>
 <script>
@@ -31,7 +37,21 @@
                 salary: 20000,
                 hasCorporateCard: true,
                 spendingLimit: 10000,
-                yearsInCompany: 5
+                yearsInCompany: 5,
+                projects: [
+                    {
+                        name: "Project A",
+                        time: "2 years"
+                    },
+                    {
+                        name: "Project B",
+                        time: "2 years"
+                    },
+                    {
+                        name: "Project C",
+                        time: "11 months"
+                    }
+                ]
             });
 
             return { message, favoriteNumbers, person }
