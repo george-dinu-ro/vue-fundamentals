@@ -7,7 +7,7 @@
 
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
+        <h1>{{getMessage()}}</h1>
         <p>My name is {{person.name}}</p>
         <p>My details: {{person}}</p>
         <p>My random number in range [1, 10] : {{getRandomNumber()}}</p>
@@ -23,6 +23,10 @@
 
             const luckyNumbers = [11, 22, 33];
 
+            function getMessage() {
+                return message.toUpperCase();
+            }
+
             function getRandomNumber() {
                 return Math.floor(Math.random() * 10) + 1;
             }
@@ -33,7 +37,7 @@
                 country: "USA"
             };
 
-            return { message, getRandomNumber, luckyNumbers, person }
+            return { getMessage, getRandomNumber, luckyNumbers, person }
         }
     }).mount("#app");
 
