@@ -15,14 +15,15 @@
         </ul>
         <h3>My Projects</h3>
         <ul>
-            <li v-for="(project, index) in person.projects">
-                <span>{{index + 1}} - Project: {{project.name}} for {{project.time}}</span>
+            <li v-for="(project, index) in person.projects" :key="project.name">
+                <span>{{index + 1}} - Project: {{project.name}} for {{project.time}}</span> <input type="text" />
             </li>
         </ul>
         <h3>My favorite numbers</h3>
         <div>
             <span v-for="favoriteNumber in favoriteNumbers">{{favoriteNumber}}, </span>
         </div>
+        {{reorderProjects()}}
     </div>
 </body>
 <script>
@@ -33,6 +34,12 @@
             const message = "Hello world";
 
             const favoriteNumbers = [1, 11, 22, 33, 44, 55];
+
+            function reorderProjects() {
+                setTimeout(() => {
+                    person.projects.sort(() => Math.random() - 0.5);
+                }, 5000);
+            }
 
             const person = reactive({
                 name: "John J.",
@@ -58,7 +65,7 @@
                 ]
             });
 
-            return { message, favoriteNumbers, person }
+            return { message, favoriteNumbers, person, reorderProjects }
         }
     }).mount("#app");
 
