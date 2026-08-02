@@ -8,6 +8,7 @@
 <body>
     <div id="app">
         <h1>{{message}}</h1>
+        <p>{{question}}</p>
     </div>
 </body>
 <script>
@@ -15,7 +16,10 @@
 
     createApp({
         setup() {
-            return { message: "Hello world" }
+            const message = "Hello world";
+            const question = "How are you?";
+
+            return { message, question }
         }
     }).mount("#app");
 
