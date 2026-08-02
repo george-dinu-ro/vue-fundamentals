@@ -8,7 +8,11 @@
 <body>
     <div id="app">
         <h1>{{message}}</h1>
-        <p>I am {{person.name}} {{person.age}} years old</p>
+        <ul>
+            <li v-for="(value, key) in person">
+                {{key}} - {{value}}
+            </li>
+        </ul>
         <h3>My Projects</h3>
         <ul>
             <li v-for="(project, index) in person.projects">
