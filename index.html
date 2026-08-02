@@ -9,9 +9,10 @@
     <div id="app">
         <h1>{{message}}</h1>
         <p>I am {{person.name}} {{person.age}} years old</p>
-        <p v-if="person.hasCorporateCard">Person have a corporate card spending limit: {{person.spendingLimit}}</p>
-        <p v-else-if="person.salary > 10000 && person.yearsInCompany >= 2">Person is eligible for a corporate card</p>
-        <p v-else>Person doesn't have a corporate card</p>
+        <p>My favorite numbers</p>
+        <ul>
+            <li v-for="favoriteNumber in favoriteNumbers">{{favoriteNumber}}</li>
+        </ul>
     </div>
 </body>
 <script>
@@ -20,6 +21,8 @@
     createApp({
         setup() {
             const message = "Hello world";
+
+            const favoriteNumbers = [1, 11, 22, 33, 44, 55];
 
             const person = reactive({
                 name: "John J.",
@@ -31,7 +34,7 @@
                 yearsInCompany: 5
             });
 
-            return { message, person }
+            return { message, favoriteNumbers, person }
         }
     }).mount("#app");
 
