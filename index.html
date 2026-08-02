@@ -7,12 +7,9 @@
 
 <body>
     <div id="app">
-        <h1 v-html="getMessage()"></h1>
+        <h1>{{message}}</h1>
         <p>I am {{person.name}} {{person.age}} years old</p>
-        <p>Random updating number: {{randomNumber}}</p>
-        <p v-once>Random fixed number: {{randomNumber}}</p>
-        <p><a target="_blank" v-bind:href="googleUrl">Google</a></p>
-        {{setRandomNumber()}}
+        <p v-show="person.hasCorporateCard">Card spending limit: {{person.spendingLimit}}</p>
     </div>
 </body>
 <script>
@@ -20,30 +17,19 @@
 
     createApp({
         setup() {
-            const message = "Hello world</h1>";
-
-            const googleUrl = "https://www.google.com";
-
-            let randomNumber = ref(5);
+            const message = "Hello world";
 
             const person = reactive({
                 name: "John J.",
                 age: 30,
-                country: "USA"
+                country: "USA",
+                salary: "***",
+                hasCorporateCard: true,
+                spendingLimit: 10000,
+                yearsInCompany: 5
             });
 
-            function getMessage() {
-                return `<h1><u>${message}</u></h1>`;
-            }
-
-            function setRandomNumber() {
-                setTimeout(() => {
-                    person.age = 31;
-                    randomNumber.value = Math.floor(Math.random() * 100) + 1;
-                }, 2000);
-            }
-
-            return { randomNumber, getMessage, setRandomNumber, person, googleUrl }
+            return { message, person }
         }
     }).mount("#app");
 
