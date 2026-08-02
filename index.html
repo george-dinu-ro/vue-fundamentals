@@ -11,6 +11,7 @@
         <p>I am {{person.name}} {{person.age}} years old</p>
         <p>Random updating number: {{randomNumber}}</p>
         <p v-once>Random fixed number: {{randomNumber}}</p>
+        <p><a target="_blank" v-bind:href="googleUrl">Google</a></p>
         {{setRandomNumber()}}
     </div>
 </body>
@@ -20,6 +21,8 @@
     createApp({
         setup() {
             const message = "Hello world</h1>";
+
+            const googleUrl = "https://www.google.com";
 
             let randomNumber = ref(5);
 
@@ -40,7 +43,7 @@
                 }, 2000);
             }
 
-            return { randomNumber, getMessage, setRandomNumber, person }
+            return { randomNumber, getMessage, setRandomNumber, person, googleUrl }
         }
     }).mount("#app");
 
